@@ -2,6 +2,16 @@ name: Terraform Deployement
 
 on:
   workflow_dispatch:
+   inputs: 
+      tfaction:
+        description: "Terraform action"
+        required: true
+        default: "apply"
+        type: choice
+        options:
+           - "apply"
+           - "destroy"
+        
 permissions: 
   contents: "read"
   id-token: "write"
@@ -13,12 +23,22 @@ jobs:
      
       - uses: actions/checkout@v4
 
-      
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - uses: hashicorp/setup-terraform@v2.0.3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_version: 1.9.1
 
-    
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Terraform init
+        run: Terraform init
+
+      - name: Terraform Plan
+        run: Terraform Plan
+        
+      - name: Terraform apply 
+        run: Terraform apply -auto-approve
+        
+
+      - name: Terraform Destroy 
+        run: Terraform apply -auto-approve -destroy        
+
+        

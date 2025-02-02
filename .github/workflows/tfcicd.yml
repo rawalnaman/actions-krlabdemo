@@ -12,7 +12,7 @@ jobs:
         name: "My code checkout"
 
       - name: Run a one-line script
-        run: 
+        run: ech Hello, World!
         
       - name: Run a multi-line script
         run: |

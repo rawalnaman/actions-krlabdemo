@@ -16,7 +16,7 @@ google = {
     organization = "namantf" 
 
     workspaces { 
-      name = "KRnetwork_tfvcs" 
+      name = "cicd_workspace" 
     } 
   } 
   required_version = ">= 1.1.0"

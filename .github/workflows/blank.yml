@@ -29,18 +29,18 @@ jobs:
           terraform_version: 1.9.1
 
       - name: Terraform init
-        run: Terraform init
+        run: terraform init
 
       - name: Terraform Plan
-        run: Terraform Plan
+        run: terraform Plan
         
       - name: Terraform apply 
         if: ${{ github.event.inputs.tfaction == 'apply' }}
-        run: Terraform apply -auto-approve
+        run: terraform apply -auto-approve
         
 
       - name: Terraform Destroy 
         if: ${{ github.event.inputs.tfaction == 'destroy' }}
-        run: Terraform apply -auto-approve -destroy        
+        run: terraform apply -auto-approve -destroy        
 
         

@@ -32,7 +32,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform Plan
+        run: terraform plan
         
       - name: Terraform apply 
         if: ${{ github.event.inputs.tfaction == 'apply' }}
